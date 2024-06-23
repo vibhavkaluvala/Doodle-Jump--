@@ -130,8 +130,7 @@ bool checkCollision(int x, int y, status *Game){
  //Checks if character y position is within bounds of second platform row
  if(y >= (*Game).platformY1 - 25 && y <= (*Game).platformY1 - 15){
  for(int i = 0; i < 3; i++){
- //Checks if character x position is within bounds of current index
-platform
+ //Checks if character x position is within bounds of current index platform
  if(x + 12.5 >= (*Game).platformX1[i] && x + 12.5 <=
 (*Game).platformX1[i] + 30){
  return true;
@@ -141,8 +140,7 @@ platform
  //Checks if character y position is within bounds of third platform row
  if(y >= (*Game).platformY2 - 25 && y <= (*Game).platformY2 - 15){
  for(int i = 0; i < 3; i++){
- //Checks if character x position is within bounds of current index
-platform
+ //Checks if character x position is within bounds of current index platform
  if(x + 12.5 >= (*Game).platformX2[i] && x + 12.5 <=
 (*Game).platformX2[i] + 30){
  return true;
@@ -152,8 +150,7 @@ platform
  //Checks if character y position is within bounds of fourth platform row
  if(y >= (*Game).platformY3 - 25 && y <= (*Game).platformY3 - 15){
  for(int i = 0; i < 3; i++){
- //Checks if character x position is within bounds of current index
-platform
+ //Checks if character x position is within bounds of current index platform
  if(x + 12.5 >= (*Game).platformX3[i] && x + 12.5 <=
 (*Game).platformX3[i] + 30){
  return true;
@@ -163,8 +160,7 @@ platform
  //Checks if character y position is within bounds of fifth platform row
  if(y >= (*Game).platformY4 - 25 && y <= (*Game).platformY4 - 15){
  for(int i = 0; i < 3; i++){
- //Checks if character x position is within bounds of current index
-platform
+ //Checks if character x position is within bounds of current index platform
  if(x + 12.5 >= (*Game).platformX4[i] && x + 12.5 <=
 (*Game).platformX4[i] + 30){
  return true;
@@ -174,8 +170,7 @@ platform
  //Checks if character y position is within bounds of sixth platform row
  if(y >= (*Game).platformY5 - 25 && y <= (*Game).platformY5 - 15){
  for(int i = 0; i < 3; i++){
- //Checks if character x position is within bounds of current index
-platform
+ //Checks if character x position is within bounds of current index platform
  if(x + 12.5 >= (*Game).platformX5[i] && x + 12.5 <=
 (*Game).platformX5[i] + 30){
  return true;
@@ -185,8 +180,7 @@ platform
  //Checks if character y position is within bounds of seventh platform row
  if(y >= (*Game).platformY6 - 25 && y <= (*Game).platformY6 - 15){
  for(int i = 0; i < 3; i++){
- //Checks if character x position is within bounds of current index
-platform
+ //Checks if character x position is within bounds of current index platform
  if(x + 12.5 >= (*Game).platformX6[i] && x + 12.5 <=
 (*Game).platformX6[i] + 30){
  return true;
@@ -371,8 +365,7 @@ Sets:
 void generateFirstPlatform(int platform[]){
  //Calls RandInt and divides by randmax to get a random number between 0 and 1
  float randomNormal = ((1.0) * Random.RandInt()) / RANDMAX;
- //Multiplies random number between 0 and 1 by width of screen to get a random x
-coordinate
+ //Multiplies random number between 0 and 1 by width of screen to get a random x coordinate
  int randX = randomNormal * WIDTH;
  //If x position is greater than width of screen minutes width of platform
  //then sets x coordinate to 290
@@ -400,15 +393,12 @@ void generateSecondPlatform(int platform[]){
  bool overlap = false;
  //While there is no overlap
  while(!overlap){
- //Calls RandInt and divides by randmax to get a random number between 0 and
-1
+ //Calls RandInt and divides by randmax to get a random number between 0 and 1
  float randomNormal = ((1.0) * Random.RandInt()) / RANDMAX;
- //Multiplies random number between 0 and 1 by width of screen to get a
-random x coordinate
+ //Multiplies random number between 0 and 1 by width of screen to get a random x coordinate
  int randX = randomNormal * WIDTH;
 
- //Checks if there is overlap between the new x coordinate and the first
-platform
+ //Checks if there is overlap between the new x coordinate and the first platform
  if(randX < platform[0] - 30 || randX > platform[0] + 30){
  if(randX < 290){
  platform[1] = randX;
@@ -435,15 +425,12 @@ void generateThirdPlatform(int platform[]){
  //Sets overlap boolean to false
  bool overlap = false;
  while(!overlap){
- //Calls RandInt and divides by randmax to get a random number between 0 and
-1
+ //Calls RandInt and divides by randmax to get a random number between 0 and 1
  float randomNormal = ((1.0) * Random.RandInt()) / RANDMAX;
- //Multiplies random number between 0 and 1 by width of screen to get a
-random x coordinate
+ //Multiplies random number between 0 and 1 by width of screen to get a random x coordinate
  int randX = randomNormal * WIDTH;
 
- //Checks if there is overlap between the new x coordinate and the first and
-second platform
+ //Checks if there is overlap between the new x coordinate and the first and second platform
  if((randX < platform[0] - 30 || randX > platform[0] + 30) && (randX <
 platform[1] - 30 || randX > platform[1] + 30)){
  if(randX < 290){
@@ -938,21 +925,18 @@ bool VerticalMovement(status *Game, bool left, Stats gameStats) {
  }
  //Draw all platforms
  drawAllPlatforms(Game);
- //If the mouse x position is greater than the previous x position then the
-character is facing right
+ //If the mouse x position is greater than the previous x position then the character is facing right
  if(x > (*Game).prevX){
  //Draw a character facing right
  player_sprite(x1, y1, !(*Game).left);
  (*Game).prevLeft = false;
- //If the mouse x position is less than the previous x position then the
-character is facing left
+ //If the mouse x position is less than the previous x position then the character is facing left
  }else if(x < (*Game).prevX){
  //Draw a character facing left
  player_sprite(x1, y1, (*Game).left);
  (*Game).prevLeft = true;
 
- //If the mouse x position is the same as the previous x position then the
-character has not changed direction
+ //If the mouse x position is the same as the previous x position then the character has not changed direction
  }else{
  //Draw a character facing the same direction
  player_sprite(x1, y1, (*Game).prevLeft);
@@ -991,21 +975,18 @@ character has not changed direction
  if (x < 300) {
  x1 = x;
  }
- //If the mouse x position is greater than the previous x position then the
-character is facing right
+ //If the mouse x position is greater than the previous x position then the character is facing right
  if(x > (*Game).prevX){
  //Draw a character facing right
  player_sprite(x1, y1, !(*Game).left);
  (*Game).prevLeft = false;
- //If the mouse x position is less than the previous x position then the
-character is facing left
+ //If the mouse x position is less than the previous x position then the character is facing left
  }else if(x < (*Game).prevX){
  //Draw a character facing left
  player_sprite(x1, y1, (*Game).left);
  (*Game).prevLeft = true;
 
- //If the mouse x position is the same as the previous x position then the
-character has not changed direction
+ //If the mouse x position is the same as the previous x position then the character has not changed direction
  }else{
  //Draw a character facing the same direction
  player_sprite(x1, y1, (*Game).prevLeft);
@@ -1032,21 +1013,18 @@ character has not changed direction
  if (x < 300) {
  x1 = x;
  }
- //If the mouse x position is greater than the previous x position then
-the character is facing right
+ //If the mouse x position is greater than the previous x position then the character is facing right
  if(x > (*Game).prevX){
  //Draw a character facing right
  player_sprite(x1, y1, !(*Game).left);
  (*Game).prevLeft = false;
- //If the mouse x position is less than the previous x position then the
-character is facing left
+ //If the mouse x position is less than the previous x position then the character is facing left
  }else if(x < (*Game).prevX){
  //Draw a character facing left
  player_sprite(x1, y1, (*Game).left);
  (*Game).prevLeft = true;
 
- //If the mouse x position is the same as the previous x position then
-the character has not changed direction
+ //If the mouse x position is the same as the previous x position then the character has not changed direction
  }else{
  //Draw a character facing the same direction
  player_sprite(x1, y1, (*Game).prevLeft);
